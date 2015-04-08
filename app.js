@@ -5,5 +5,5 @@ http.createServer(function (request, response) {
   router.home(request, response);
   router.user(request, response);
   router.css(request, response);
-}).listen();
+}).listen(80);
 console.log('The server is running! You\'re listening at port 3000.');
