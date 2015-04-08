@@ -1,0 +1,28 @@
+{
+  "name": "moviesearcher",
+  "version": "1.0.0",
+  "description": "Webapp to search for movies and retrieve movie information. Written in vanilla Node.js.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flamingveggies/moviesearcher.git"
+  },
+  "keywords": [
+    "moviesearcher",
+    "movie",
+    "searcher"
+  ],
+  "author": "Merritt Lawrenson",
+  "license": "ISC",
+  "engines": {
+    "node": "0.12.x"
+  },
+  "bugs": {
+    "url": "https://github.com/flamingveggies/moviesearcher/issues"
+  },
+  "homepage": "https://github.com/flamingveggies/moviesearcher"
+}
