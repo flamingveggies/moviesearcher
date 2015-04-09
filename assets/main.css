@@ -19,7 +19,7 @@ body {
 
 #results img {
     vertical-align: middle;
-    margin: 0 8px;
+    margin-right: 8px;
 }
 
 input {
@@ -97,4 +97,26 @@ a, a:visited {
 
 span {
     color: #2C3238;
+}
+
+@media screen and (max-width: 542px) {
+
+    body {
+        font-size: 80%;
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    li {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media screen and (max-width: 338px) {
+
+    ul:last-child li:nth-child(2) {
+        font-size: 0.875em;
+    }
 }
