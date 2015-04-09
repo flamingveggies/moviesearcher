@@ -40,20 +40,27 @@ function user(request, response) {
     // get json from new york times
     var movieQuery = new Query(searchquery);
     // on "end"
-    movieQuery.on("end", function (movieJSON) {
-      // show movie results    
+    movieQuery.on("end", function (movieJSON) { // show movie results 
       
-      // store values which we need
-      var values = {
-        moviename: movieJSON.results[0].display_title,
-        movieyear: movieJSON.results[0].opening_date,
-        capsulereview: movieJSON.results[0].capsule_review,
-        summary: movieJSON.results[0].summary_short,
-        reviewlink: movieJSON.results[0].link.url,
-        trailerlink: movieJSON.results[0].related_urls[4].url
+      renderer.viewHTML("resultshead", {}, response);
+
+      function listResults (i) { // store values needed and form list sections
+        if ( i < movieJSON.results.length ) {
+          var values = {
+            moviename: movieJSON.results[i].display_title,
+            movieyear: movieJSON.results[i].opening_date,
+            capsulereview: movieJSON.results[i].capsule_review,
+            summary: movieJSON.results[i].summary_short,
+            reviewlink: movieJSON.results[i].link.url,
+            trailerlink: movieJSON.results[i].related_urls[4].url
+          }
+          renderer.viewHTML("results", values, response);
+          listResults( i + 1 );
+        }
       }
-      // simple response
-      renderer.viewHTML("results", values, response);
+      listResults(0) // generate list sections for each returned movie result
+
+      renderer.viewHTML("resultsfoot", {}, response);
       renderer.viewHTML("footer", {}, response);
       response.end();
     });
