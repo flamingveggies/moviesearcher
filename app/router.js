@@ -33,7 +33,7 @@ function home(request, response) {
 function user(request, response) {
   // if url == "/..."
   var searchquery = request.url.replace("/", "");
-  if (request.url.indexOf('.css') === -1 && searchquery.length > 0) {
+  if (request.url.indexOf('.css') === -1 && request.url.indexOf('.png') === -1 && searchquery.length > 0) {
     response.writeHead(200, commonHeaders);
     renderer.viewHTML("header", {}, response);
     
@@ -69,14 +69,18 @@ function user(request, response) {
   }
 }
 
-function css(request, response) {
+function assets(request, response) {
   if (request.url.indexOf('.css') != -1) {
     response.writeHead(200, {'Content-Type': 'text/css'});
-    renderer.viewCSS(request.url, {}, response);
+    renderer.viewAsset(request.url, {}, response);
+    response.end();
+  } else if (request.url.indexOf('.png') != -1) {
+    response.writeHead(200, {'Content-Type': 'image/png'});
+    renderer.viewAsset(request.url, {}, response);
     response.end();
   }
 }
 
 module.exports.home = home;
 module.exports.user = user;
-module.exports.css = css;
+module.exports.assets = assets;

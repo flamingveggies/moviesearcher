@@ -19,10 +19,10 @@ function viewHTML(templateName, values, response) {
   response.write(fileContents);
 }
 
-function viewCSS (templateName, values, response) {
-  var fileContents = fs.readFileSync('./assets/' + templateName, {encoding: "utf8"});
+function viewAsset (templateName, values, response) {
+  var fileContents = fs.readFileSync('./assets/' + templateName);
   response.write(fileContents);
 } 
 
 module.exports.viewHTML = viewHTML;
-module.exports.viewCSS = viewCSS;
+module.exports.viewAsset = viewAsset;
