@@ -1,6 +1,6 @@
 {
   "name": "moviesearcher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Webapp to search for movies and retrieve movie information. Written in vanilla Node.js.",
   "main": "app.js",
   "scripts": {

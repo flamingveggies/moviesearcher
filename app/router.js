@@ -48,11 +48,17 @@ function user(request, response) {
         if ( i < movieJSON.results.length ) {
           var values = {
             moviename: movieJSON.results[i].display_title,
-            movieyear: movieJSON.results[i].opening_date.substring(0,4),
+            movieyear: movieJSON.results[i].opening_date,
             capsulereview: movieJSON.results[i].capsule_review,
             summary: movieJSON.results[i].summary_short,
             reviewlink: movieJSON.results[i].link.url,
             trailerlink: movieJSON.results[i].related_urls[4].url
+          }
+          // cut down release date to just year. if release date is null, pass error instead.
+          if (values.movieyear != null) {
+            values.movieyear = values.movieyear.substring(0,4)
+          } else {
+            values.movieyear = '(no date found)'
           }
           renderer.viewHTML("results", values, response);
           listResults( i + 1 );
